@@ -17,7 +17,8 @@ spec:
     spec:
       containers:
       - name: "flask"
-        image: "gcr.io/<project-id>/flask-image"
+        imagePullPolicy: Always
+        image: "jirkako/kube_example"
 
 
 ---
@@ -61,7 +62,7 @@ metadata:
   labels:
     app: "postgres"
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: "postgres"

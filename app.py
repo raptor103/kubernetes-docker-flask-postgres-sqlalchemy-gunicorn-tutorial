@@ -1,3 +1,10 @@
+"""
+!!! Postgress is available when deployment is run.
+Postgress image is downloaded and started on kubernetes.
+So database manipulations can be done also only when kubernetes is running.
+"""
+
+
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
@@ -14,7 +21,7 @@ class User(db.Model):
     name = db.Column(db.String())
     surname = db.Column(db.String())
 
-@app.route('/test')
+@app.route('/')
 def test():
     return 'Hello World! I am from docker!'
 
@@ -28,5 +35,4 @@ def test_db():
         db.session.add(u)
         db.session.commit()
     user = User.query.first()
-    return "User '{} {}' is from database".format(user.name, user.surname)
-
+    return f"User '{user.name} {user.surname}' is from database"
