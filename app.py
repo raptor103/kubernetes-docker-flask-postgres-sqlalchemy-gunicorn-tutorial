@@ -36,3 +36,7 @@ def test_db():
         db.session.commit()
     user = User.query.first()
     return f"User '{user.name} {user.surname}' is from database"
+
+# enable only when running locally with docker compose
+# if __name__ == "__main__":
+#     app.run(host="0.0.0.0", port=5000)

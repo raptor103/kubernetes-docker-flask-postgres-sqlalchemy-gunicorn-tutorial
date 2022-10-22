@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  app:
+    image: jirkako/kube_example
+    ports:
+    - "5000:5000"
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: 12345
+      POSTGRES_DB: "demo_db"
+      POSTGRES_USER: "jiko"
