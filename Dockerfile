@@ -7,4 +7,5 @@ COPY . /app
 WORKDIR /app
 RUN pip install -r requirements.txt
 EXPOSE 5000
-CMD ["/bin/bash", "entrypoint.sh"]
+# CMD ["/bin/bash", "entrypoint.sh"]
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--workers=1", "app:app"]
